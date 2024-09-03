@@ -5,6 +5,12 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Sort {
+    /*
+    * Complexity: O(N^2).
+    * Advantage: simple to understand and code, work well with small datasets.
+    * Disadvantage: time complexity of O(N^2), does not work well with large datasets, does not preserve the
+    * relative order of equal keys witch means it is not stable.
+    */
     public List<Integer> SelectionSort(List<Integer> inRandomArr){
         //save the size of the list to operate the indexes of itself
         int size = inRandomArr.size();
@@ -28,7 +34,11 @@ public class Sort {
         }
         return inRandomArr;
     }
-
+    /*
+     * Complexity: O(N^2).
+     * Advantage:
+     * Disadvantage:
+     */
     public List<Integer> BubbleSort(List<Integer> inRandomArr){
         int size = inRandomArr.size();
         for(int i=0; i< size-1; i++){
@@ -46,7 +56,11 @@ public class Sort {
 
         return inRandomArr;
     }
-
+    /*
+     * Complexity: O(N^2).
+     * Advantage:
+     * Disadvantage:
+     */
     public List<Integer> InsertionSort(List<Integer> inRandomArr){
         int size = inRandomArr.size();
         for(int i=0; i<size;i++){
