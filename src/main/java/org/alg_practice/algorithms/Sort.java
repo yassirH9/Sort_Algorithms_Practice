@@ -36,8 +36,9 @@ public class Sort {
     }
     /*
      * Complexity: O(N^2).
-     * Advantage:
-     * Disadvantage:
+     * Advantage: easy to understand and implement, it doesn't require any memory space to swap, it's a stable sort alg
+     * Disadvantage: the complexity makes it a bad sort alg for big datasets, also it need to compare all the values
+     * this can course a lack of efficiency in certain cases.
      */
     public List<Integer> BubbleSort(List<Integer> inRandomArr){
         int size = inRandomArr.size();
