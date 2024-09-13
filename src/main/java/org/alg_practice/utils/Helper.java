@@ -1,4 +1,6 @@
 package org.alg_practice.utils;
+import org.w3c.dom.ls.LSInput;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.List;
@@ -13,8 +15,8 @@ public class Helper {
         }
         return RandomArr;
     }
-
-    //helper to merge two list into one sorting it
+    //helper to merge two lists into one, sorting it
+    //used in merge sort
     public static List<Integer> mergeList(List<Integer>originalList, List<Integer> leftPart, List<Integer> rightPart){
         int i=0, j=0, k=0;
 
@@ -29,14 +31,9 @@ public class Helper {
         }
         // copying the remaining elements from the left list.
         while(i < leftPart.size()){
-            originalList.set(k++, leftPart.get(i++));
-//            System.out.println(leftPart.get(i++
-
-        }
-        while(k < rightPart.size()){
+            originalList.set(k++, leftPart.get(i++));}
+        while(j < rightPart.size()){
             originalList.set(k++, rightPart.get(j++));
-//            System.out.println(rightPart.get(i++));
-
         }
         return originalList;
     }

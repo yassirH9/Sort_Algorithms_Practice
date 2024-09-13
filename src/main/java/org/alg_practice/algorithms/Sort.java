@@ -111,9 +111,8 @@ public class Sort {
         MergeSort(rightPart);
 
         //merge both halves into the list back
-        inRandomArr = Helper.mergeList(inRandomArr,leftPart,rightPart);
+        inRandomArr = Helper.mergeList(inRandomArr,rightPart,leftPart);
 
         return inRandomArr;
     }
-
 }
