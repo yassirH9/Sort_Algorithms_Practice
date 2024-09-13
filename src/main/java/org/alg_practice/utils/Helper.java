@@ -14,18 +14,20 @@ public class Helper {
         return RandomArr;
     }
 
-    //helper to merge two list into one
+    //helper to merge two list into one sorting it
     public static List<Integer> mergeList(List<Integer>originalList, List<Integer> leftPart, List<Integer> rightPart){
         int i=0, j=0, k=0;
 
         //loop through both lists merge them and sorting it in order
         while (i < leftPart.size() && j < rightPart.size()){
+            //if the element in the left list is smaller it's added to the merged list
             if(leftPart.get(i) <= rightPart.get(j)){
                 originalList.set(k++,leftPart.get(i++));
-            }else{
+            }else{ //otherwise it added from the right list
                 originalList.set(k++,rightPart.get(j++));
             }
         }
+        // copying the remaining elements from the left list.
         while(i < leftPart.size()){
             originalList.set(k++, leftPart.get(i++));
 //            System.out.println(leftPart.get(i++
