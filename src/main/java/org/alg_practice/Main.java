@@ -32,7 +32,10 @@ public class Main {
         //sortedArr = sort.InsertionSort(randomArr);
 
         //-> uncomment below to sort by Merge
-        sortedArr = sort.MergeSort(randomArr);
+        //sortedArr = sort.MergeSort(randomArr);
+
+        //-> uncomment below to sort by Merge
+        sortedArr = sort.QuickSort(randomArr, 0, randomArr.size()-1);
 
         long endSortTime = System.nanoTime();
         System.out.println(sortedArr);

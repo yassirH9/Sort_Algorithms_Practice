@@ -1,12 +1,16 @@
 package org.alg_practice.utils;
-import org.w3c.dom.ls.LSInput;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.List;
 
 public class Helper {
-    public List<Integer>  genArr(int size){
+    /*
+     * PORPOISE: Generate a list with random numbers between 0-100
+     * USED IN: Main
+     * VARS: [size: used to set the method a max size of the list you want to it to return]
+     * */
+    public static List<Integer>  genArr(int size){
         List<Integer>RandomArr = new ArrayList<>();
         Random random = new Random();
         size--;
@@ -15,8 +19,10 @@ public class Helper {
         }
         return RandomArr;
     }
-    //helper to merge two lists into one, sorting it
-    //used in merge sort
+    /*
+    * PORPOISE: merge two lists into one sorting the elements inside beforehand merge it
+    * USED IN: merge sort method in class Sort
+    * */
     public static List<Integer> mergeList(List<Integer>originalList, List<Integer> leftPart, List<Integer> rightPart){
         int i=0, j=0, k=0;
 
@@ -36,5 +42,36 @@ public class Helper {
             originalList.set(k++, rightPart.get(j++));
         }
         return originalList;
+    }
+    /*
+     * PORPOISE: method used to divide the list from the pivot above and under
+     * USED IN: quick sort method in class Sort
+     * */
+    public static int quickSortPartition(List<Integer> listIn, int low, int high){
+        int pivot = listIn.get(high);//pivot element
+        int minorVal_index = low-1; //index of the smaller element
+
+        for(int i = low; i< high; i++){
+            if(listIn.get(i) <= pivot){
+                minorVal_index++;
+
+                //swap the element in minorVal_index and i
+                swap(listIn, minorVal_index,i);
+            }
+        }
+
+        //place the pivot element at the correct position
+        swap(listIn,minorVal_index+1,high);
+
+        return minorVal_index+1;
+    }
+    /*
+     * PORPOISE: this method swap elements inside a list using both indexes of the elements and a reference of the list
+     * USED IN: quick sort method in class Sort
+     * */
+    public static void swap (List<Integer> listIn, int i, int minorVal_index){
+        int temp = listIn.get(minorVal_index);
+        listIn.set(minorVal_index, listIn.get(i));
+        listIn.set(i,temp);
     }
 }

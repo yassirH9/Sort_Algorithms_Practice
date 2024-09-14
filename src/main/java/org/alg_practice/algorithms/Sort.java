@@ -8,6 +8,12 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Sort {
+    /*NOTES
+    * there's no reason to keep the return in this method because the value required it's a list,
+    * so it shares a pointer no a copy of the structure, which means that all the changes made to the list
+    * will affect directly the original list.
+    * Anyway, keep the return sentence it isn't a bad practice.
+    * */
     /*
     * Complexity: O(N^2)
     * Advantage: simple to understand and code, work well with small datasets.
@@ -113,6 +119,24 @@ public class Sort {
         //merge both halves into the list back
         inRandomArr = Helper.mergeList(inRandomArr,rightPart,leftPart);
 
+        return inRandomArr;
+    }
+    /*
+     * Recurrence relation:
+     * Complexity: Best case O(N*logN) | average O(N*logN) | worse O(N^2)
+     * Auxiliar space: O(1)
+     * Advantage:
+     * Disadvantage:
+     */
+    public List<Integer> QuickSort(List<Integer> inRandomArr, int low, int high){
+        if(low<high){
+            //find the pivot using the partition method
+            int pivotindex = Helper.quickSortPartition(inRandomArr, low, high);
+
+            //recursively sort the elements before and after the partition
+            QuickSort(inRandomArr, low, pivotindex-1);
+            QuickSort(inRandomArr, pivotindex+1,high);
+        }
         return inRandomArr;
     }
 }
