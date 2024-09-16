@@ -139,4 +139,15 @@ public class Sort {
         }
         return inRandomArr;
     }
+    /*
+     * Recurrence relation:
+     * Complexity:
+     * Auxiliar space:
+     * Advantage:
+     * Disadvantage:
+     */
+    public List<Integer> HeapSort(List<Integer> inRandomArr){
+
+        return null;
+    }
 }

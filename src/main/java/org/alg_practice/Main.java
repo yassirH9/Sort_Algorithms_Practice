@@ -22,20 +22,23 @@ public class Main {
         long startSortTime = System.nanoTime();
         List<Integer> sortedArr = new ArrayList<>(); //list to place the new values sorted
 
-        //-> uncomment below to sort by selection
+        //-> uncomment below to sort by selectionsort
         //sortedArr = sort.SelectionSort(randomArr);
 
-        //-> uncomment below to sort by bubble
+        //-> uncomment below to sort by bubblesort
         //sortedArr = sort.BubbleSort(randomArr);
 
-        //-> uncomment below to sort by insertion
+        //-> uncomment below to sort by insertionsort
         //sortedArr = sort.InsertionSort(randomArr);
 
-        //-> uncomment below to sort by Merge
+        //-> uncomment below to sort by Mergesort
         //sortedArr = sort.MergeSort(randomArr);
 
-        //-> uncomment below to sort by Merge
-        sortedArr = sort.QuickSort(randomArr, 0, randomArr.size()-1);
+        //-> uncomment below to sort by quicksort
+        //sortedArr = sort.QuickSort(randomArr, 0, randomArr.size()-1);
+
+        //-> uncomment below to sort by heapsort
+
 
         long endSortTime = System.nanoTime();
         System.out.println(sortedArr);
