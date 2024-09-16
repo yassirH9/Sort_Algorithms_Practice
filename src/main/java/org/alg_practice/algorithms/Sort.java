@@ -4,6 +4,8 @@ package org.alg_practice.algorithms;
 import org.alg_practice.utils.Helper;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -147,7 +149,14 @@ public class Sort {
      * Disadvantage:
      */
     public List<Integer> HeapSort(List<Integer> inRandomArr){
-
-        return null;
+        int listSize = inRandomArr.size();
+        for(int i = listSize / 2-1; i>=0; i--){
+            Helper.heapify(inRandomArr,listSize,i);
+        }
+        for(int i = listSize-1; i>0; i--){
+            Collections.swap(inRandomArr,0,i);
+            Helper.heapify(inRandomArr,i,0);
+        }
+        return inRandomArr;
     }
 }

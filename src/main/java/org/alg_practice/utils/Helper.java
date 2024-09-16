@@ -1,8 +1,6 @@
 package org.alg_practice.utils;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.List;
+import java.util.*;
 
 public class Helper {
     /*
@@ -73,5 +71,31 @@ public class Helper {
         int temp = listIn.get(minorVal_index);
         listIn.set(minorVal_index, listIn.get(i));
         listIn.set(i,temp);
+    }
+    /*
+     * PORPOISE:
+     * USED IN:
+     * */
+    public static void heapify(List<Integer> listIn, int heapSize, int rootElement){
+        int largest = rootElement;
+        int leftTree = 2 * rootElement + 1;
+        int rightTree = 2 * rootElement + 2;
+
+        //if left child is larger than root
+        if(leftTree < heapSize && listIn.get(leftTree)>listIn.get(largest)){
+            largest = leftTree;
+        }
+        //uf right child is larger than the current largest
+        if(rightTree < heapSize && listIn.get(rightTree)>listIn.get(largest)){
+            largest = rightTree;
+        }
+        //if the larges is not the root, swap abd continue heapifying
+        if(largest != rootElement){
+            Collections.swap(listIn, rootElement, largest);
+
+            //recursively heapify the affected subtree
+            heapify(listIn,heapSize,largest);
+        }
+
     }
 }
