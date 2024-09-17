@@ -143,18 +143,23 @@ public class Sort {
     }
     /*
      * Recurrence relation:
-     * Complexity:
-     * Auxiliar space:
+     * Complexity:O(log(n))
+     * Auxiliar space:O(n)
      * Advantage:
      * Disadvantage:
      */
     public List<Integer> HeapSort(List<Integer> inRandomArr){
         int listSize = inRandomArr.size();
+
+        //Step 1 build a max heap, this arranges the array into a heaop structure.
         for(int i = listSize / 2-1; i>=0; i--){
             Helper.heapify(inRandomArr,listSize,i);
         }
+        //Step 2 extract elemments from the heap one by one
         for(int i = listSize-1; i>0; i--){
+            //move the root(current largest element) to the end.
             Collections.swap(inRandomArr,0,i);
+            //call heapify on the reduced heap to maintain heap structure
             Helper.heapify(inRandomArr,i,0);
         }
         return inRandomArr;

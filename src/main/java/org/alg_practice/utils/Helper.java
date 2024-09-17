@@ -73,13 +73,14 @@ public class Helper {
         listIn.set(i,temp);
     }
     /*
-     * PORPOISE:
-     * USED IN:
+     * PORPOISE:this function maintains the max-heap properly in the heap-sort algorithm
+     * USED IN:heap sort method in class Sort
+     * NOTE: heapSize used to pass the size of the heap (or sub-heap) rootElement used to pass the index of the current element in the heap
      * */
     public static void heapify(List<Integer> listIn, int heapSize, int rootElement){
-        int largest = rootElement;
-        int leftTree = 2 * rootElement + 1;
-        int rightTree = 2 * rootElement + 2;
+        int largest = rootElement;//initialize largest as the root.
+        int leftTree = 2 * rootElement + 1;//left child index.
+        int rightTree = 2 * rootElement + 2;//right child index.
 
         //if left child is larger than root
         if(leftTree < heapSize && listIn.get(leftTree)>listIn.get(largest)){
