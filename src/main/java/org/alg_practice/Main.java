@@ -41,7 +41,7 @@ public class Main {
         //sortedArr = sort.HeapSort(randomArr);
 
         //-> uncomment below to sort by countingsort
-        sortedArr = sort.CountingSort(randomArr);
+        //sortedArr = sort.CountingSort(randomArr);
 
         long endSortTime = System.nanoTime();
         System.out.println(sortedArr);
