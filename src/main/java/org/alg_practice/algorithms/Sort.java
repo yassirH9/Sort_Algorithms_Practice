@@ -147,6 +147,13 @@ public class Sort {
      * Auxiliar space:O(n)
      * Advantage:
      * Disadvantage:
+     *
+     * visual explain:
+     * For an array [4, 10, 3, 5, 1]:
+     * Build Max Heap → [10, 5, 3, 4, 1]
+     * Swap 10 with 1 → [1, 5, 3, 4, 10] and heapify → [5, 4, 3, 1, 10]
+     * Swap 5 with 1 → [1, 4, 3, 5, 10] and heapify → [4, 1, 3, 5, 10]
+     * Repeat until sorted → [1, 3, 4, 5, 10]
      */
     public List<Integer> HeapSort(List<Integer> inRandomArr){
         int listSize = inRandomArr.size();
@@ -161,6 +168,53 @@ public class Sort {
             Collections.swap(inRandomArr,0,i);
             //call heapify on the reduced heap to maintain heap structure
             Helper.heapify(inRandomArr,i,0);
+        }
+        return inRandomArr;
+    }
+    /*
+     * Recurrence relation:
+     * Complexity:
+     * Auxiliar space:
+     * Advantage:
+     * Disadvantage:
+     *
+     * visual explain:
+     *
+     */
+    public List<Integer> CountingSort(List<Integer> inRandomArr){
+        // step 1) find the max value in the input list
+        int maxVal = Collections.max(inRandomArr);
+        /* step 2) create a count array with size (max+1)
+        *  it will be used to store the frequency of each value in the input list
+        */
+        int[] countArr = new int[maxVal+1];
+        /* step 3) count the occurrences of each element in the input list
+        * and store it in the count array (countArr)
+        * */
+        for(int inRanArrVal: inRandomArr){
+            countArr[inRanArrVal]++;
+        }
+        /* step 4) modify the count array (countArr) by adding the previous counts
+        * this gives the actual position of elements in the sorted list
+        * */
+        for(int i = 1; i<countArr.length;i++){
+            countArr[i] += countArr[i-1];
+        }
+        //step 5 create an output list to store the sorted elements
+        List<Integer> outputList = new ArrayList<>(Collections.nCopies(inRandomArr.size(),0));
+        /*step 6 build the output list by placing the elemments at the correct position
+        * according to the count array (countArr) starting from the end to maintain stability
+        */
+        for(int i = inRandomArr.size()-1; i>=0; i--){
+            int numTemp = inRandomArr.get(i);
+            outputList.set(countArr[numTemp]-1, numTemp);
+            countArr[numTemp]--;
+        }
+        /* step 7 and last one copy the sorted output list back into the oritinal list
+        *
+        * */
+        for(int i =0;i<inRandomArr.size();i++){
+            inRandomArr.set(i,outputList.get(i));
         }
         return inRandomArr;
     }

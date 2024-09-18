@@ -38,7 +38,10 @@ public class Main {
         //sortedArr = sort.QuickSort(randomArr, 0, randomArr.size()-1);
 
         //-> uncomment below to sort by heapsort
-        sortedArr = sort.HeapSort(randomArr);
+        //sortedArr = sort.HeapSort(randomArr);
+
+        //-> uncomment below to sort by countingsort
+        sortedArr = sort.CountingSort(randomArr);
 
         long endSortTime = System.nanoTime();
         System.out.println(sortedArr);
