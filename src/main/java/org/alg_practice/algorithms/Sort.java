@@ -224,6 +224,9 @@ public class Sort {
      * Disadvantage: not efficient for small data sets
      */
     public List<Integer> RadixSort(List<Integer> inRandomArr){
+        if(inRandomArr.isEmpty()){
+            return inRandomArr;
+        }
         //find the maximum number to determinate the number of digits
         int maxVal = Helper.getMaxValueOf(inRandomArr);
 
@@ -240,8 +243,32 @@ public class Sort {
      * Advantage: better than others comparison-based algorithms such quicksort or merge sort
      * Disadvantage: not efficient for small data sets
      */
-    public List<Integer> BucketSort(List<Integer> inRandomArr){
+    public List<Double> BucketSort(List<Double> inRandomArr){
+        int listSize = inRandomArr.size();
 
-        return null;
+        //step 1) create the buckets
+        List<List<Integer>> buckets = new ArrayList<>(listSize);
+        for(int i = 0; i<listSize; i++){
+            buckets.add(new ArrayList<>());
+        }
+
+        //step 2) put the elements in the buckets
+        for(int i = 0; i<listSize; i++){
+            int bucketIndex = (int)(inRandomArr.get(i)*listSize);
+            buckets.get(bucketIndex).add((int)Math.round(inRandomArr.get(i)*100));
+        }
+        //step 3) sort the buckets using RadixSort()
+        for(List<Integer> bucket: buckets){
+            RadixSort(bucket);
+        }
+        //step 4) merge the buckets
+        int index = 0;
+        for(int i=0; i<listSize; i++){
+            for (int j=0; j<buckets.get(i).size(); j++){
+                inRandomArr.set(index, buckets.get(i).get(j)/100.0);
+                index++;
+            }
+        }
+        return inRandomArr;
     }
 }

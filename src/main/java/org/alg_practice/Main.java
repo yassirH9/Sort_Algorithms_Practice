@@ -19,7 +19,8 @@ public class Main {
 
         //take the current time of the system to count execution time after sort
         long startSortTime = System.nanoTime();
-        List<Integer> sortedArr = new ArrayList<>(); //list to place the new values sorted
+        //-> uncomment below to any sort algorithms
+        //List<Integer> sortedArr = new ArrayList<>(); //list to place the new values sorted
 
         //-> uncomment below to sort by selectionsort
         //sortedArr = sort.SelectionSort(randomArr);
@@ -48,7 +49,8 @@ public class Main {
         //-> uncomment below to sort by bucketsort
         List<Double> randomArr = Helper.genDoubleList(5);
         System.out.println(randomArr);
-
+        List<Double> sortedArr = new ArrayList<>();
+        sortedArr = sort.BucketSort(randomArr);
 
 
 
