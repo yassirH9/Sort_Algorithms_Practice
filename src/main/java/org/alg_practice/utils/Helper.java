@@ -2,6 +2,7 @@ package org.alg_practice.utils;
 
 import org.w3c.dom.ls.LSOutput;
 
+import java.text.DecimalFormat;
 import java.util.*;
 
 public class Helper {
@@ -10,12 +11,27 @@ public class Helper {
      * USED IN: Main
      * VARS: [size: used to set the method a max size of the list you want to it to return]
      * */
-    public static List<Integer>  genArr(int size){
+    public static List<Integer> genIntegerList(int size){
         List<Integer>RandomArr = new ArrayList<>();
         Random random = new Random();
         size--;
         for(int i=0; i<=size;i++){
             RandomArr.add(random.nextInt(100));
+        }
+        return RandomArr;
+    }
+    /*
+     * PORPOISE: Generate a list with random double type numbers with 2 decimal precision
+     * USED IN: Main
+     * VARS: [size: used to set the method a max size of the list you want to it to return]
+     * */
+    public static List<Double> genDoubleList(int size){
+        List<Double>RandomArr = new ArrayList<>();
+        Random random = new Random();
+        size--;
+        for(int i=0;i<=size;i++){
+            //trunk the value with 2 decimals
+            RandomArr.add(Math.floor(random.nextDouble()*100)/100);
         }
         return RandomArr;
     }

@@ -232,4 +232,16 @@ public class Sort {
         }
         return inRandomArr;
     }
+    /*
+     * Recurrence relation:
+     * Complexity:O(d*(n+b) where d is the number of digits, n is the number of elements
+     * b is the base of the number system being used
+     * Auxiliar space: O(n+b) where n is the number of elements and b is the base of the number
+     * Advantage: better than others comparison-based algorithms such quicksort or merge sort
+     * Disadvantage: not efficient for small data sets
+     */
+    public List<Integer> BucketSort(List<Integer> inRandomArr){
+
+        return null;
+    }
 }

@@ -9,10 +9,9 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Helper helper = new Helper();
         //Generate Random values list
-        List<Integer> randomArr = helper.genArr(5);
-        System.out.println(randomArr);
+        //List<Integer> randomArr = Helper.genIntegerList(5);
+        //System.out.println(randomArr);
 
 
         //SORT CODE
@@ -44,7 +43,14 @@ public class Main {
         //sortedArr = sort.CountingSort(randomArr);
 
         //-> uncomment below to sort by radixsort
-        sortedArr = sort.RadixSort(randomArr);
+        //sortedArr = sort.RadixSort(randomArr);
+
+        //-> uncomment below to sort by bucketsort
+        List<Double> randomArr = Helper.genDoubleList(5);
+        System.out.println(randomArr);
+
+
+
 
         long endSortTime = System.nanoTime();
         System.out.println(sortedArr);
