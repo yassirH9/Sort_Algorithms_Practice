@@ -1,5 +1,7 @@
 package org.alg_practice.utils;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.*;
 
 public class Helper {
@@ -98,5 +100,53 @@ public class Helper {
             heapify(listIn,heapSize,largest);
         }
 
+    }
+    /*
+     * PORPOISE:this function returns the highest number in a list<Integer>
+     * USED IN:RadixSort algorithm
+     * */
+    public static int getMaxValueOf (List<Integer> listIn){
+        int max = listIn.get(0);//initialice with the first value of the list
+        //loop for compare each number with the highest found before
+        for(int i=1;i<listIn.size();i++){
+            if(listIn.get(i)>max){
+                max=listIn.get(i);
+            }
+        }
+        return max;
+    }
+    /*
+     * PORPOISE:this function will work similar to the CountiSort function but sorting by significant values
+     * USED IN:RadixSort algorithm
+     * NOTE: exp will be de var used to storage the current digit place value
+     * exp = 1 means we are sorting by the last significant digit
+     * exp = 10 means we are sorting by the second significant digit
+     * exp = 100 means we are sorting by the third significant digit
+     * */
+    public static void countingSortBySignificantVals(List<Integer> listIn, int exp){
+        int listSize = listIn.size();
+        List<Integer> output = new ArrayList<>(Collections.nCopies(listSize,0));
+
+        int[] countList = new int[10];
+
+        //count occurrences of digits
+        for(int i=0; i<listSize;i++){
+            int digit = (listIn.get(i)/exp)%10;
+            countList[digit]++;
+        }
+        //update countList[i] so it contains the actual position of this digits in the output list
+        for(int i=1;i<10;i++){
+            countList[i]+=countList[i-1];
+        }
+        //build the output list
+        for(int i=listSize-1;i>=0;i--){
+            int digit = (listIn.get(i)/exp)%10;
+            output.set(countList[digit]-1,listIn.get(i));
+            countList[digit]--;
+        }
+        //copi the output list back to the original one
+        for(int i=0;i<listSize;i++){
+            listIn.set(i,output.get(i));
+        }
     }
 }

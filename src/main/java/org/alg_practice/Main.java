@@ -43,6 +43,9 @@ public class Main {
         //-> uncomment below to sort by countingsort
         //sortedArr = sort.CountingSort(randomArr);
 
+        //-> uncomment below to sort by radixsort
+        sortedArr = sort.RadixSort(randomArr);
+
         long endSortTime = System.nanoTime();
         System.out.println(sortedArr);
         System.out.println("\033[0;32m"+"Sort process last: "+(endSortTime-startSortTime)+" ns | "+((endSortTime-startSortTime)/1_000_000)+" ms" +"\033[0m");
