@@ -9,10 +9,9 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Helper helper = new Helper();
         //Generate Random values list
-        List<Integer> randomArr = helper.genArr(5);
-        System.out.println(randomArr);
+        //List<Integer> randomArr = Helper.genIntegerList(5);
+        //System.out.println(randomArr);
 
 
         //SORT CODE
@@ -20,7 +19,8 @@ public class Main {
 
         //take the current time of the system to count execution time after sort
         long startSortTime = System.nanoTime();
-        List<Integer> sortedArr = new ArrayList<>(); //list to place the new values sorted
+        //-> uncomment below to any sort algorithms
+        //List<Integer> sortedArr = new ArrayList<>(); //list to place the new values sorted
 
         //-> uncomment below to sort by selectionsort
         //sortedArr = sort.SelectionSort(randomArr);
@@ -42,6 +42,17 @@ public class Main {
 
         //-> uncomment below to sort by countingsort
         //sortedArr = sort.CountingSort(randomArr);
+
+        //-> uncomment below to sort by radixsort
+        //sortedArr = sort.RadixSort(randomArr);
+
+        //-> uncomment below to sort by bucketsort
+        List<Double> randomArr = Helper.genDoubleList(5);
+        System.out.println(randomArr);
+        List<Double> sortedArr = new ArrayList<>();
+        sortedArr = sort.BucketSort(randomArr);
+
+
 
         long endSortTime = System.nanoTime();
         System.out.println(sortedArr);

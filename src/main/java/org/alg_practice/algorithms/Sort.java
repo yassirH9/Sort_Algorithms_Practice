@@ -173,13 +173,10 @@ public class Sort {
     }
     /*
      * Recurrence relation:
-     * Complexity:
-     * Auxiliar space:
+     * Complexity:O(N+M) where N and M are the size of the inRandomArr and countArr
+     * Auxiliar space: O(N+M) where N and M are the space taken by inRandomArr and countArr
      * Advantage:
      * Disadvantage:
-     *
-     * visual explain:
-     *
      */
     public List<Integer> CountingSort(List<Integer> inRandomArr){
         // step 1) find the max value in the input list
@@ -215,6 +212,62 @@ public class Sort {
         * */
         for(int i =0;i<inRandomArr.size();i++){
             inRandomArr.set(i,outputList.get(i));
+        }
+        return inRandomArr;
+    }
+    /*
+     * Recurrence relation:
+     * Complexity:O(d*(n+b) where d is the number of digits, n is the number of elements
+     * b is the base of the number system being used
+     * Auxiliar space: O(n+b) where n is the number of elements and b is the base of the number
+     * Advantage: better than others comparison-based algorithms such quicksort or merge sort
+     * Disadvantage: not efficient for small data sets
+     */
+    public List<Integer> RadixSort(List<Integer> inRandomArr){
+        if(inRandomArr.isEmpty()){
+            return inRandomArr;
+        }
+        //find the maximum number to determinate the number of digits
+        int maxVal = Helper.getMaxValueOf(inRandomArr);
+
+        for(int exp = 1; maxVal /exp>0; exp *= 10){
+            Helper.countingSortBySignificantVals(inRandomArr, exp);
+        }
+        return inRandomArr;
+    }
+    /*
+     * Recurrence relation:
+     * Complexity:O(d*(n+b) where d is the number of digits, n is the number of elements
+     * b is the base of the number system being used
+     * Auxiliar space: O(n+b) where n is the number of elements and b is the base of the number
+     * Advantage: better than others comparison-based algorithms such quicksort or merge sort
+     * Disadvantage: not efficient for small data sets
+     */
+    public List<Double> BucketSort(List<Double> inRandomArr){
+        int listSize = inRandomArr.size();
+
+        //step 1) create the buckets
+        List<List<Integer>> buckets = new ArrayList<>(listSize);
+        for(int i = 0; i<listSize; i++){
+            buckets.add(new ArrayList<>());
+        }
+
+        //step 2) put the elements in the buckets
+        for(int i = 0; i<listSize; i++){
+            int bucketIndex = (int)(inRandomArr.get(i)*listSize);
+            buckets.get(bucketIndex).add((int)Math.round(inRandomArr.get(i)*100));
+        }
+        //step 3) sort the buckets using RadixSort()
+        for(List<Integer> bucket: buckets){
+            RadixSort(bucket);
+        }
+        //step 4) merge the buckets
+        int index = 0;
+        for(int i=0; i<listSize; i++){
+            for (int j=0; j<buckets.get(i).size(); j++){
+                inRandomArr.set(index, buckets.get(i).get(j)/100.0);
+                index++;
+            }
         }
         return inRandomArr;
     }
