@@ -14,12 +14,18 @@ The repository includes implementations of the following algorithms:
 - Quick Sort  
 - Heap Sort
 - Counting Sort
+- Radix Sort
+- Bucket Sort
 
-An the following methods used as utils for the mentioned before algorithms:
+An the following methods used as helpers for the mentioned before algorithms:
+- genIntegerList
+- genDoubleList
 - mergeList
 - quickSortPartition
 - swap
 - heapify
+- getMaxValueOf
+- countingSortBySignificantVals
 
 ~Note: Further information about the methods in javaDoc inside the code~
 
